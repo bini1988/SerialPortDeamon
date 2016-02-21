@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+# Copyright (c) 2015 Karastelev Nikolai <rus.nick@mail.ru>
+# Auto start COM deamon comsrv
+#
+# Usage: /etc/init.d/rcomsrv start
+#
+
+START=50
+STOP=15
+
+PROG=/usr/bin/comsrv
+CONFIG=/etc/comsrv.conf
+
+start() {
+	$PROG -c "$CONFIG" -d -t
+}
+
+stop() {
+	$PROG -s; sleep 10
+}
